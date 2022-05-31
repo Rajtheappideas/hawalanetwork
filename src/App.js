@@ -21,6 +21,8 @@ const EditRecipient = lazy(() => import("./pages/EditRecipient"));
 const NewRecipient = lazy(() => import("./pages/NewRecipient"));
 const TransactionHistory = lazy(() => import("./pages/TransactionHistory"));
 const SendMoney = lazy(() => import("./pages/SendMoney"));
+const MobileBanking = lazy(() => import("./pages/MobileBanking"));
+const TransactionStatus = lazy(() => import("./pages/TransactionStatus"));
 const Error404 = lazy(() => import("./pages/Error404"));
 
 const App = () => {
@@ -65,6 +67,8 @@ const App = () => {
               element={<TransactionHistory />}
             />
             <Route path="/sendmoney" element={<SendMoney />} />
+            <Route path="/mobilebanking" element={<MobileBanking />} />
+            <Route path="/transactionstatus" element={<TransactionStatus />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </Suspense>

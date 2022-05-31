@@ -12,3 +12,5 @@ export { default as EditRecipient } from "./EditRecipient";
 export { default as NewRecipient } from "./NewRecipient";
 export { default as TransactionHistory } from "./TransactionHistory";
 export { default as SendMoney } from "./SendMoney";
+export { default as MobileBanking } from "./MobileBanking";
+export { default as TransactionStatus } from "./TransactionStatus";

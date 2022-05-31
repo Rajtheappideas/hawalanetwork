@@ -5,9 +5,14 @@ import background from "../../assets/background.png";
 const Herosection = () => {
   const [openSendMoney, setOpenSendMoney] = useState(true);
   const [openTrackApplication, setOpenTrackApplication] = useState(false);
+
+  console.log(window.Geolocation);
   return (
     <div className="h-full w-full relative">
-      <img src={background} className="w-full h-screen object-fit -z-10" />
+      <img
+        src={background}
+        className="w-full h-screen object-cover object-center -z-10"
+      />
       {/* text div */}
       <div className="absolute md:top-1/3 md:left-1/3 md:-translate-x-1/2 w-1/2 md:block hidden text-white">
         <p className="text-4xl tracking-wide  leading-normal font-semibold text-left w-10/12">
@@ -110,7 +115,7 @@ const Herosection = () => {
           )}
           {/* track application box */}
           {openTrackApplication && (
-            <>
+            <div id="trackapplication">
               <p className="font-semibold text-xl px-3 w-full">
                 Transaction Code
               </p>
@@ -122,14 +127,16 @@ const Herosection = () => {
                 />
               </div>
               <div className="p-2">
-                <button
-                  type="button"
-                  className="w-full h-12 text-center rounded-lg p-2 bg-Green text-white"
-                >
-                  Check Transaction
-                </button>
+                <Link to="/transactionstatus">
+                  <button
+                    type="button"
+                    className="w-full active:scale-95 duration-100 transition-all ease-in-out h-12 text-center rounded-lg p-2 bg-Green text-white"
+                  >
+                    Check Transaction
+                  </button>
+                </Link>
               </div>
-            </>
+            </div>
           )}
           {/* terms of service */}
           <div className="px-2">
