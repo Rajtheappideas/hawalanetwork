@@ -16,7 +16,7 @@ const NewRecipient = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold text-3xl top-[45%] left-1/2 text-white -translate-x-1/2">
+        <h1 className="absolute font-bold text-3xl sm:top-[45%] top-1/3 whitespace-nowrap left-1/2 text-white -translate-x-1/2">
           New Recipient
         </h1>
       </div>

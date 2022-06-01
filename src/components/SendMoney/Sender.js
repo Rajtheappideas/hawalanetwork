@@ -1,6 +1,8 @@
+import { ChevronDownIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import caneda from "../../assets/caneda.png";
 
 const Sender = ({ setShowReceiveDiv }) => {
   const Label = tw.label`
@@ -114,13 +116,18 @@ const Sender = ({ setShowReceiveDiv }) => {
         />
       </div>
       {/*sender phone */}
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start relative">
         <Label>Sender's Phone*</Label>
         <input
           type="tel"
           maxLength={10}
-          className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
+          className="w-full py-4 pl-24 bg-LightGray border border-black rounded-lg outline-none"
+          placeholder="+1"
         />
+        <div className="absolute top-12 left-2 flex items-center">
+          <img src={caneda} className="h-7 mr-1" />
+          <ChevronDownIcon className="h-5" />
+        </div>
       </div>
       {/*upload photo */}
       <div className="flex flex-col items-start">
@@ -131,11 +138,14 @@ const Sender = ({ setShowReceiveDiv }) => {
             className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
             placeholder="Select file"
           />
-        <div className="absolute top-0 right-0 h-full p-1">
-          <button type="button" className="w-28 float-right z-10 bg-gray-200 h-full text-center rounded-lg">
-            Browse
-          </button>
-        </div>
+          <div className="absolute top-0 right-0 h-full p-1">
+            <button
+              type="button"
+              className="w-28 float-right z-10 bg-gray-200 h-full text-center rounded-lg"
+            >
+              Browse
+            </button>
+          </div>
         </div>
       </div>
       {/* checkbox */}
@@ -159,14 +169,19 @@ const Sender = ({ setShowReceiveDiv }) => {
           className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
         />
       </div>
-      {/*sender phone */}
-      <div className="flex flex-col items-start">
+      {/*receive phone */}
+      <div className="flex flex-col items-start relative">
         <Label>Receiver's Phone*</Label>
         <input
           type="tel"
           maxLength={10}
-          className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
+          className="w-full py-4 pl-24 bg-LightGray border border-black rounded-lg outline-none"
+          placeholder="+1"
         />
+        <div className="absolute top-12 left-2 flex items-center">
+          <img src={caneda} className="h-7 mr-1" />
+          <ChevronDownIcon className="h-5" />
+        </div>
       </div>
       {/* option to choose send money */}
       <div className="flex flex-col items-start">

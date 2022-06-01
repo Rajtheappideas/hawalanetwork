@@ -15,15 +15,15 @@ const ResetPassword = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold text-3xl top-[45%] left-1/2 text-white -translate-x-1/2">
+        <h1 className="absolute font-bold text-3xl sm:top-[45%] top-1/3 whitespace-nowrap left-1/2 text-white -translate-x-1/2">
           Change Password
         </h1>
       </div>
       {/* empty div */}
-      <div className="h-screen w-full bg-white" />
+      <div className="sm:h-80 h-60 w-full bg-white" />
       {/* form */}
       <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
-        <p className="text-xl font-semibold text-center">
+        <p className="text-xl tracking-widest font-semibold text-center w-full">
           The Password should have atleast 6 characters.
         </p>
         <div className="flex flex-col items-start">

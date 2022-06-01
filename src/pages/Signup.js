@@ -2,9 +2,15 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Footer, Navbar } from "../components";
 import background from "../assets/background.png";
+import Caneda from "../assets/caneda.png";
 import { Link } from "react-router-dom";
+import tw from "tailwind-styled-components";
+import { ChevronDownIcon } from "@heroicons/react/outline";
 
 const Signup = () => {
+  const Label = tw.label`
+  sm:text-xl mb-2 font-semibold
+  `;
   return (
     <div className="xl:p-5">
       <Helmet>
@@ -23,6 +29,7 @@ const Signup = () => {
       {/* empty div */}
       <div className="h-screen w-full bg-white" />
       <div className="h-screen w-full bg-white" />
+      <div className="xl:hidden sm:h-60 w-full bg-white" />
       {/* form start from here */}
       <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
         <p className="text-xl font-semibold text-center">
@@ -30,7 +37,7 @@ const Signup = () => {
         </p>
         {/* name */}
         <div className="flex flex-col items-start">
-          <label>Sender's name*</label>
+          <Label>Sender's name*</Label>
           <div className="flex items-center justify-between w-full space-x-2">
             <input
               type="text"
@@ -46,7 +53,7 @@ const Signup = () => {
         </div>
         {/* address */}
         <div className="flex flex-col items-start">
-          <label>Address*</label>
+          <Label>Address*</Label>
           <input
             type="text"
             className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
@@ -56,7 +63,7 @@ const Signup = () => {
         {/* postal code and city */}
         <div className="flex items-start justify-between w-full space-x-2">
           <div className="flex flex-col items-start w-full ">
-            <label>Postal Code*</label>
+            <Label>Postal Code*</Label>
             <input
               type="tel"
               className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
@@ -64,7 +71,7 @@ const Signup = () => {
             />
           </div>
           <div className="flex flex-col items-start w-full ">
-            <label>City*</label>
+            <Label>City*</Label>
             <select className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none">
               <option>select</option>
               <option>city1</option>
@@ -77,7 +84,7 @@ const Signup = () => {
         {/* state and country */}
         <div className="flex items-start justify-between w-full space-x-2">
           <div className="flex flex-col items-start w-full ">
-            <label>State*</label>
+            <Label>State*</Label>
             <input
               type="tel"
               className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
@@ -85,7 +92,7 @@ const Signup = () => {
             />
           </div>
           <div className="flex flex-col items-start w-full ">
-            <label>Country*</label>
+            <Label>Country*</Label>
             <select className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none">
               <option>select</option>
               <option>india</option>
@@ -97,7 +104,7 @@ const Signup = () => {
         </div>
         {/* email */}
         <div className="flex flex-col items-start">
-          <label>Email*</label>
+          <Label>Email*</Label>
           <input
             type="email"
             className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
@@ -106,7 +113,7 @@ const Signup = () => {
         </div>
         {/* Occupation */}
         <div className="flex flex-col items-start">
-          <label>Occupation</label>
+          <Label>Occupation</Label>
           <select className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none">
             <option>Choose an Occupation</option>
             <option>option2</option>
@@ -117,24 +124,29 @@ const Signup = () => {
         </div>
         {/* birthday */}
         <div className="flex flex-col items-start">
-          <label>Birthday</label>
+          <Label>Birthday</Label>
           <input
             type="date"
             className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
           />
         </div>
         {/* phone */}
-        <div className="flex flex-col items-start">
-          <label>Sender's Phone*</label>
+        <div className="flex flex-col items-start relative">
+          <Label>Receiver's Phone*</Label>
           <input
             type="tel"
             maxLength={10}
-            className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
+            className="w-full py-4 pl-24 bg-LightGray border border-black rounded-lg outline-none"
+            placeholder="+1"
           />
+          <div className="absolute top-12 left-2 flex items-center">
+            <img src={Caneda} className="h-7 mr-1" />
+            <ChevronDownIcon className="h-5" />
+          </div>
         </div>
         {/* password */}
         <div className="flex flex-col items-start">
-          <label>Password*</label>
+          <Label>Password*</Label>
           <input
             type="password"
             className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
@@ -142,7 +154,7 @@ const Signup = () => {
         </div>
         {/* confirm password */}
         <div className="flex flex-col items-start">
-          <label>Confirm Password*</label>
+          <Label>Confirm Password*</Label>
           <input
             type="password"
             className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"

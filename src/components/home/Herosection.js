@@ -11,7 +11,7 @@ const Herosection = () => {
     <div className="h-full w-full relative">
       <img
         src={background}
-        className="w-full h-screen object-cover object-center -z-10"
+        className="w-full h-full object-cover object-center -z-10"
       />
       {/* text div */}
       <div className="absolute md:top-1/3 md:left-1/3 md:-translate-x-1/2 w-1/2 md:block hidden text-white">
@@ -24,7 +24,7 @@ const Herosection = () => {
         </p>
       </div>
       {/* input box */}
-      <div className="absolute sm:top-10 top-2 xl:right-28 sm:right-10 right-0 sm:p-0 p-2">
+      <div className="absolute sm:top-5 top-2 xl:right-28 sm:right-10 right-0 sm:p-0 p-2">
         <div className="bg-white xl:w-[32rem] lg:w-96 h-full rounded-xl xl:space-y-5 space-y-2 pb-4">
           {/* buttons */}
           <div className="flex items-center w-full">

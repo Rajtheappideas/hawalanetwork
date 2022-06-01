@@ -1,6 +1,9 @@
+import { ChevronDownIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import caneda from "../../assets/caneda.png";
+
 
 const Receiver = ({
   setShowReceiveDiv,
@@ -113,13 +116,18 @@ const Receiver = ({
           </div>
 
           {/*Receiver phone */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start relative">
             <Label>Receiver's Phone*</Label>
             <input
               type="tel"
               maxLength={10}
-              className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
+              className="w-full py-4 pl-24 bg-LightGray border border-black rounded-lg outline-none"
+              placeholder="+1"
             />
+            <div className="absolute top-12 left-2 flex items-center">
+              <img src={caneda} className="h-7 mr-1" />
+              <ChevronDownIcon className="h-5" />
+            </div>
           </div>
 
           {/* option to choose send money */}
@@ -147,7 +155,9 @@ const Receiver = ({
             <div className="float-right">
               <button
                 type="button"
-                onClick={() => setShowReceiverSecondDiv(true)}
+                onClick={() => {
+                  setShowReceiverSecondDiv(true);
+                }}
                 className="border border-Red w-40 h-12 text-Red text-center rounded-lg"
               >
                 Next

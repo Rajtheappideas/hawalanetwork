@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Footer, Navbar } from "../components";
 import background from "../assets/background.png";
 import { Receiver, Sender, Payment } from "../components/index";
+import CountryCodes from "../utils/CountryCodes";
 
 const SendMoney = () => {
   const [showReceiveDiv, setShowReceiveDiv] = useState(false);
@@ -47,14 +48,25 @@ const SendMoney = () => {
       {/* empty div */}
       <div
         className={`${
-          showReceiveDiv && "lg:h-[35rem] md:h-[32rem] h-[37rem] "
+          showReceiveDiv &&
+          !showReceiverSecondDiv &&
+          "lg:h-[35rem] md:h-[32rem] h-[37rem]"
         }`}
       />
-      {!showReceiveDiv && <div className="h-screen w-full bg-white" />}
-      {!showReceiveDiv && <div className="h-screen w-full bg-white" />}
-      {!showReceiveDiv && <div className="h-screen w-full bg-white" />}
-      {!showReceiveDiv && (
-        <div className=" xl:h-80 lg:h-[32rem] md:h-[30rem] h-[29rem] w-full bg-white" />
+      <div
+        className={`${
+          showReceiverSecondDiv && !showPaymentDiv && "lg:h-96 md:h-80 h-96"
+        }`}
+      />
+      <div className={`${showPaymentDiv && "md:h-[28rem] h-[31rem]"}`} />
+      {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
+        <div className="h-screen w-full bg-white" />
+      )}
+      {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
+        <div className="h-screen w-full bg-white" />
+      )}
+      {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
+        <div className="xl:h-96 md:h-[32rem] h-[30rem] w-full bg-white" />
       )}
 
       {/* transaction summuray */}

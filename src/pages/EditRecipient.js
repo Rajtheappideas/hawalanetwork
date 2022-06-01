@@ -16,8 +16,8 @@ const EditRecipient = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold text-3xl top-[45%] left-1/2 text-white -translate-x-1/2">
-          Edit Recipients Informations
+        <h1 className="absolute font-bold text-3xl lg:top-[45%] top-1/4 sm:whitespace-nowrap left-1/2 text-white -translate-x-1/2">
+          Edit Recipient Informations
         </h1>
       </div>
       {/* empty div */}

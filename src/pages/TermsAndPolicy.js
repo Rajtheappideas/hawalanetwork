@@ -45,27 +45,27 @@ const TermsAndPolicy = () => {
           Morbi pharetra non massa at cursus. Vivarnus convallis dui eu nisl
           blandit, vel convallis nisi dapibus.
         </p>
-        <p className="text-xl font-semibold ml-16">
+        <p className="text-xl font-semibold sm:ml-16 ml-6">
           A. What to include in a Terms and Conditions
         </p>
-        <p className="text-gray-600 ml-16">
+        <p className="text-gray-600 sm:ml-16 ml-6">
           tiam rhoncus quis eros eget fringilla. Etiam malesuada enim laoreet
           nibh euismod, eu finibus elit finibus. Duis ornare tempus purus. Nam
           at leo quis tortor congue dignissim.
         </p>
-        <p className=" text-gray-600 ml-16">
+        <p className=" text-gray-600 sm:ml-16 ml-6">
           Sed non varius erat. Nulla vel nibh eu risus cursus vulputate nec ac
           elit.
         </p>
-        <p className="text-xl font-semibold ml-16">
+        <p className="text-xl font-semibold sm:ml-16 ml-6">
           B. ls a Terms and Conditions required?
         </p>
-        <p className=" text-gray-600 ml-16">
+        <p className=" text-gray-600 sm:ml-16 ml-6">
           roin efficitur vestibulum molestie. Nam urna justo, ornare commodo sem
           eget, pretium lobortis nisi. Curabitur ac felis pharetra nunc molestie
           semper quis eu mauris
         </p>
-        <p className=" text-gray-600 ml-16">
+        <p className=" text-gray-600 sm:ml-16 ml-6">
           Aliquam mollis, arcu in blandit cursus, lacus est aliquam dui, vitae
           suscipit orci massa suscipit metus. Duis faucibus, lorem eget rutrum
           dictum, arcu erat elementum metus, id rutrum mauris mi ut sapien.

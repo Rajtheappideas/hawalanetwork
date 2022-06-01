@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import { Footer, Navbar } from "../components";
 import background from "../assets/background.png";
 import styledComponents from "styled-components";
+import { Link } from "react-router-dom";
 
 const TransactionHistory = () => {
   const Div = styledComponents.div`
@@ -53,10 +54,10 @@ const TransactionHistory = () => {
         </h1>
       </div>
       {/* empty div */}
-      <div className="h-screen w-full bg-white" />
+      <div className="sm:h-80 2xl:h-screen h-60 w-full bg-white" />
       {/* form */}
       <div className="h-auto w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
-        <div className="text-xl font-semibold text-left flex items-center justify-between">
+        <div className="text-xl font-semibold text-left flex sm:flex-row sm:space-y-0 space-y-2 flex-col items-start justify-between">
           <p>A List of all the transactions you have made.</p>
           <div className="flex items-center">
             <label className="text-xl font-semibold mr-1">Search:</label>
@@ -101,7 +102,7 @@ const TransactionHistory = () => {
             </tbody>
           </table>
         </Div> */}
-        <Div>
+        <Div className="overflow-x-scroll">
           <table className="w-full table">
             <thead>
               <tr>
@@ -121,12 +122,14 @@ const TransactionHistory = () => {
                 <th>XAF 9 460.00</th>
                 <th>2022-03-12</th>
                 <th>
-                  <button
-                    type="button"
-                    className="bg-Red text-white text-center rounded-lg w-20 h-10"
-                  >
-                    Open
-                  </button>
+                  <Link to="/transactionstatus">
+                    <button
+                      type="button"
+                      className="bg-Red text-white text-center rounded-lg w-20 h-10"
+                    >
+                      Open
+                    </button>
+                  </Link>
                 </th>
               </tr>
               <tr>

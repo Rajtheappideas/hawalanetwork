@@ -128,14 +128,14 @@ const Recipients = () => {
         </h1>
       </div>
       {/* empty div */}
-      <div className="h-screen w-full bg-white" />
+      <div className="sm:h-80 xl:h-96 h-64 w-full bg-white" />
       {/* form */}
       <div className="h-auto w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
         <p className="text-xl font-semibold text-left">
           List of recipients to whom you can send money.
         </p>
         {/* search and button */}
-        <div className="flex items-center justify-between ">
+        <div className="flex sm:flex-row flex-col sm:space-y-0 space-y-2 items-center justify-between ">
           <div className="flex items-center">
             <label className="text-xl font-semibold mr-1">Search:</label>
             <input
@@ -143,7 +143,7 @@ const Recipients = () => {
               className="w-full h-10 rounded-lg outline-none border border-gray-400 p-1"
             />
           </div>
-          <div>
+          <div className="sm:w-auto w-full">
             <Link to="/newrecipients">
               <button className="w-full h-12 active:scale-95 duration-100 ease-in-out transition-all tracking-wide bg-Green text-white text-center px-2 rounded-lg texxl font-semibold">
                 Add Recipient
@@ -185,7 +185,7 @@ const Recipients = () => {
             </tbody>
           </table>
         </Div> */}
-        <Div>
+        <Div className="overflow-x-scroll">
           <table className="w-full table-auto">
             <thead>
               <tr>
