@@ -84,7 +84,7 @@ const TransactionStatus = () => {
           </div>
         </div>
       </div>
-      <div className="sm:h-80 h-52" />
+      <div className="sm:h-80 h-60" />
       {/* transaction summuray */}
       <div className="h-auto lg:w-1/2 xl:w-[52%] w-[90%] mx-auto xl:mt-20 md:mt-24 mt-14 mb-10 bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2">
         <p className="sm:text-3xl text-xl font-semibold text-left capitalize">

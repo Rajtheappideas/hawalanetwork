@@ -128,7 +128,7 @@ const Recipients = () => {
         </h1>
       </div>
       {/* empty div */}
-      <div className="sm:h-80 xl:h-96 h-64 w-full bg-white" />
+      <div className="sm:h-80 xl:h-96 h-80 w-full bg-white" />
       {/* form */}
       <div className="h-auto w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
         <p className="text-xl font-semibold text-left">

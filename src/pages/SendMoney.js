@@ -50,7 +50,7 @@ const SendMoney = () => {
         className={`${
           showReceiveDiv &&
           !showReceiverSecondDiv &&
-          "lg:h-[35rem] md:h-[32rem] h-[37rem]"
+          "lg:h-[35rem] md:h-[32rem] h-[42rem]"
         }`}
       />
       <div

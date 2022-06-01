@@ -11,7 +11,7 @@ const Herosection = () => {
     <div className="h-full w-full relative">
       <img
         src={background}
-        className="w-full h-full object-cover object-center -z-10"
+        className="w-full h-screen object-cover object-center -z-10"
       />
       {/* text div */}
       <div className="absolute md:top-1/3 md:left-1/3 md:-translate-x-1/2 w-1/2 md:block hidden text-white">
