@@ -10,6 +10,7 @@ const Payment = ({
   const Label = tw.label`
   text-xl mb-2 font-semibold
   `;
+
   return (
     <>
       {isSuccessPayment ? (

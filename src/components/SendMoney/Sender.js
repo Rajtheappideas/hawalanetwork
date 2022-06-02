@@ -8,6 +8,7 @@ const Sender = ({ setShowReceiveDiv }) => {
   const Label = tw.label`
   sm:text-xl mb-2 font-semibold
   `;
+
   return (
     <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 space-y-5 absolute top-1/2 left-1/2 -translate-x-1/2 pb-10">
       <div className="text-lg font-semibold text-left">

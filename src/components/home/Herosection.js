@@ -5,8 +5,7 @@ import background from "../../assets/background.png";
 const Herosection = () => {
   const [openSendMoney, setOpenSendMoney] = useState(true);
   const [openTrackApplication, setOpenTrackApplication] = useState(false);
-
-  console.log(window.Geolocation);
+  
   return (
     <div className="h-full w-full relative">
       <img

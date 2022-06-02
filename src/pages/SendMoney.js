@@ -10,7 +10,7 @@ const SendMoney = () => {
   const [showReceiverSecondDiv, setShowReceiverSecondDiv] = useState(false);
   const [showPaymentDiv, setShowPaymentDiv] = useState(false);
   const [isSuccessPayment, setisSuccessPayment] = useState(false);
-
+  
   return (
     <div className="xl:p-5">
       <Helmet>
@@ -32,7 +32,6 @@ const SendMoney = () => {
           setShowReceiveDiv={setShowReceiveDiv}
           showReceiverSecondDiv={showReceiverSecondDiv}
           setShowReceiverSecondDiv={setShowReceiverSecondDiv}
-          showPaymentDiv={showPaymentDiv}
           setShowPaymentDiv={setShowPaymentDiv}
         />
       ) : (

@@ -3,6 +3,7 @@ import { CheckCircleIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
 const PaymentSuccess = () => {
+
   return (
     <>
       <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2 pb-10">

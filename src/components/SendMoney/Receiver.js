@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import caneda from "../../assets/caneda.png";
 
-
 const Receiver = ({
   setShowReceiveDiv,
   showReceiverSecondDiv,
@@ -14,6 +13,8 @@ const Receiver = ({
   const Label = tw.label`
   sm:text-xl mb-2 font-semibold
   `;
+
+
   return (
     <>
       {showReceiverSecondDiv ? (
@@ -170,4 +171,4 @@ const Receiver = ({
   );
 };
 
-export default Receiver;
+export default React.memo(Receiver);
