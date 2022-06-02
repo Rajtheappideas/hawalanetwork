@@ -58,6 +58,8 @@ const SendMoney = () => {
         }`}
       />
       <div className={`${showPaymentDiv && "md:h-[28rem] h-[31rem]"}`} />
+
+
       {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
         <div className="h-screen w-full bg-white" />
       )}
@@ -65,7 +67,7 @@ const SendMoney = () => {
         <div className="h-screen w-full bg-white" />
       )}
       {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
-        <div className="xl:h-96 md:h-[32rem] h-[30rem] w-full bg-white" />
+        <div className="xl:h-96 lg:h-[30rem] md:h-[32rem]  h-96 w-full bg-white" />
       )}
 
       {/* transaction summuray */}

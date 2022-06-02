@@ -44,42 +44,43 @@ const Footer = () => {
         {/* social links */}
         <div className="space-y-2">
           <h1 className="text-2xl font-semibold">Social Media</h1>
-          <div className="flex items-start space-x-3">
+          <div className="flex items-start sm:space-x-6 space-x-3">
             <a href="https://www.facebook.com/" target="_blank">
               <img
                 src={facebook}
-                className="h-10 w-10 object-cover object-center cursor-pointer"
+                className="h-8 w-8 object-cover object-center cursor-pointer"
               />
             </a>
             <a href="https://www.linkedin.com/" target="_blank">
               <img
                 src={linkedin}
-                className="h-10 w-10 object-cover object-center cursor-pointer"
+                className="h-8 w-8 object-cover object-center cursor-pointer"
               />
             </a>
             <a href="https://www.youtube.com/" target="_blank">
               <img
                 src={youtube}
-                className="h-10 w-10 object-cover object-center cursor-pointer"
+                className="h-8 w-8 object-cover object-center cursor-pointer"
               />
             </a>
           </div>
-          <div className="flex items-start space-x-3">
+          <div className="flex items-start sm:space-x-6 space-x-3">
             <a href="https://twitter.com/" target="_blank">
               <img
                 src={twitter}
-                className="h-10 w-10 object-cover object-center cursor-pointer"
+                className="h-8 w-8 object-cover object-center cursor-pointer"
               />
             </a>
             <a href="https://in.pinterest.com/" target="_blank">
               <img
                 src={pinterest}
-                className="h-10 w-10 object-cover object-center cursor-pointer"
+                className="h-8 w-8 object-cover object-center cursor-pointer"
               />
             </a>
           </div>
         </div>
       </div>
+      {/* bottom last div footer */}
       <div className="bg-Red text-center text-xl text-white p-2">
         Copyright &#169; {year} Money Transfer All rights reserved.
       </div>

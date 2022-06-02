@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const TransactionHistory = () => {
   const Div = styledComponents.div`
-    padding: 1rem;
 
     table {
       border-spacing: 0;
@@ -36,7 +35,6 @@ const TransactionHistory = () => {
       }
     }
   `;
-
   return (
     <div className="xl:p-5">
       <Helmet>
@@ -54,9 +52,9 @@ const TransactionHistory = () => {
         </h1>
       </div>
       {/* empty div */}
-      <div className="sm:h-80 2xl:h-screen h-80 w-full bg-white" />
-      {/* form */}
-      <div className="h-auto w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
+      <div className="sm:h-60 2xl:h-screen h-64 w-full bg-white" />
+      {/* table */}
+      <div className="h-auto w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-7 space-y-2 absolute top-1/2 left-1/2 -translate-x-1/2">
         <div className="text-xl font-semibold text-left flex sm:flex-row sm:space-y-0 space-y-2 flex-col items-start justify-between">
           <p>A List of all the transactions you have made.</p>
           <div className="flex items-center">
@@ -67,7 +65,54 @@ const TransactionHistory = () => {
             />
           </div>
         </div>
-
+        <Div className="overflow-x-scroll">
+          <table className="w-full table">
+            <thead>
+              <tr>
+                <th>Transaction Code</th>
+                <th>Receiver</th>
+                <th>Amount sent</th>
+                <th>Amount Receiver</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th className="text-Red">3554-a34a-434-3</th>
+                <th>John adam</th>
+                <th>CAD 20.00</th>
+                <th>XAF 9 460.00</th>
+                <th>2022-03-12</th>
+                <th>
+                  <Link to="/transactionstatus">
+                    <button
+                      type="button"
+                      className="bg-Red text-white text-center rounded-lg w-20 h-10"
+                    >
+                      Open
+                    </button>
+                  </Link>
+                </th>
+              </tr>
+              <tr>
+                <th className="text-Red">3554-a34a-434-3</th>
+                <th>John adam</th>
+                <th>CAD 20.00</th>
+                <th>XAF 9 460.00</th>
+                <th>2022-03-12</th>
+                <th>
+                  <button
+                    type="button"
+                    className="bg-Green text-white text-center rounded-lg w-20 h-10"
+                  >
+                    Close
+                  </button>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </Div>
         {/* table */}
         {/* <Div>
           <table
@@ -102,54 +147,6 @@ const TransactionHistory = () => {
             </tbody>
           </table>
         </Div> */}
-        <Div className="overflow-x-scroll">
-          <table className="w-full table">
-            <thead>
-              <tr>
-                <th>Transaction Code</th>
-                <th>Receiver</th>
-                <th>Amount sent</th>
-                <th>Amount Receiver</th>
-                <th>Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>3554-a34a-434-3</th>
-                <th>John adam</th>
-                <th>CAD 20.00</th>
-                <th>XAF 9 460.00</th>
-                <th>2022-03-12</th>
-                <th>
-                  <Link to="/transactionstatus">
-                    <button
-                      type="button"
-                      className="bg-Red text-white text-center rounded-lg w-20 h-10"
-                    >
-                      Open
-                    </button>
-                  </Link>
-                </th>
-              </tr>
-              <tr>
-                <th>3554-a34a-434-3</th>
-                <th>John adam</th>
-                <th>CAD 20.00</th>
-                <th>XAF 9 460.00</th>
-                <th>2022-03-12</th>
-                <th>
-                  <button
-                    type="button"
-                    className="bg-Green text-white text-center rounded-lg w-20 h-10"
-                  >
-                    Close
-                  </button>
-                </th>
-              </tr>
-            </tbody>
-          </table>
-        </Div>
       </div>
       <Footer />
     </div>
