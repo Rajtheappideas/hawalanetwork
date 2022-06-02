@@ -80,7 +80,7 @@ const Navbar = () => {
           <Link to="/contactus">
             <span>Contact Us</span>
           </Link>
-          {/* USER */}
+          {/* USER dropdown*/}
           <div className="md:block hidden group relative cursor-pointer w-auto h-14 my-auto text-center">
             <div className="flex items-center justify-center pt-4">
               <p className="text-center mr-1">Kevin clark</p>
