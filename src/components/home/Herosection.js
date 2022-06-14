@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import background from "../../assets/background.png";
@@ -5,7 +6,35 @@ import background from "../../assets/background.png";
 const Herosection = () => {
   const [openSendMoney, setOpenSendMoney] = useState(true);
   const [openTrackApplication, setOpenTrackApplication] = useState(false);
-  
+  const [senderCountry, setSenderCountry] = useState("CAD");
+  const [ReceiverCountry, setReceiverCountry] = useState("USD");
+  const [senderAmount, setSenderAmount] = useState(0);
+  const [receiverAmount, setReceiverAmount] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const handleConvertMoney = () => {
+    setLoading(true);
+    axios(
+      `https://api.apilayer.com/fixer/convert?to=${ReceiverCountry}&from=${senderCountry}&amount=${senderAmount}`,
+      {
+        method: "GET",
+        headers: {
+          apikey: process.env.REACT_APP_EXCHANGECURRENY_API_KEY,
+        },
+      }
+    )
+      .then((res) => {
+        console.log(res?.data);
+        if (res?.data?.success === true) {
+          setReceiverAmount(Math.floor(res?.data?.result));
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err?.response?.data);
+        setLoading(false);
+      });
+  };
   return (
     <div className="h-full w-full relative">
       <img
@@ -56,39 +85,58 @@ const Herosection = () => {
           {/* send money box */}
           {openSendMoney && (
             <>
+              {/* sender country input */}
               <div className="flex flex-col px-3">
                 <label className="p-1 font-semibold text-lg">
                   Sender country
                 </label>
-                <select className="w-full border border-gray-400 p-2 rounded-lg">
-                  <option>Canada</option>
-                  <option>India</option>
-                  <option>China</option>
-                  <option>Russia</option>
+                <select
+                  onChange={(e) => setSenderCountry(e.target.value)}
+                  value={senderCountry}
+                  className="w-full border border-gray-400 p-2 rounded-lg"
+                >
+                  <option value={"CAD"}>Canada</option>
+                  <option value={"INR"}>India</option>
+                  <option value={"CNY"}>China</option>
+                  <option value={"RUB"}>Russia</option>
+                  <option value={"USD"}>Usa</option>
                 </select>
               </div>
+
+              {/* receiver country input */}
               <div className="flex flex-col px-3">
                 <label className="p-1 font-semibold text-lg">
                   Receiver country
                 </label>
-                <select className="w-full border border-gray-400 p-2 rounded-lg">
-                  <option>Canada</option>
-                  <option>India</option>
-                  <option>China</option>
-                  <option>Russia</option>
+                <select
+                  value={ReceiverCountry}
+                  onChange={(e) => setReceiverCountry(e.target.value)}
+                  className="w-full border border-gray-400 p-2 rounded-lg"
+                >
+                  <option value={"CAD"}>Canada</option>
+                  <option value={"INR"}>India</option>
+                  <option value={"CNY"}>China</option>
+                  <option value={"RUB"}>Russia</option>
+                  <option value={"USD"}>Usa</option>
                 </select>
               </div>
+
+              {/* sender amount */}
               <div className="flex flex-col px-3 relative">
                 <label className="p-1 font-semibold text-lg">Send Amount</label>
                 <input
                   type="number"
                   min={0}
+                  onChange={(e) => setSenderAmount(e.target.value)}
+                  value={senderAmount}
                   className="border border-gray-400 outline-none py-2 pr-14 pl-2 rounded-lg"
                 />
                 <span className="absolute top-11 right-5 border-l h-6 pl-2 text-center border-gray-600">
-                  CAD
+                  {senderCountry}
                 </span>
               </div>
+
+              {/* receiver amount */}
               <div className="flex flex-col px-3 relative">
                 <label className="p-1 font-semibold text-lg">
                   Receiver Amount
@@ -96,19 +144,25 @@ const Herosection = () => {
                 <input
                   type="number"
                   min={0}
+                  value={receiverAmount}
                   className="border border-gray-400 outline-none py-2 pr-14 pl-2 rounded-lg"
+                  disabled={true}
                 />
                 <span className="absolute top-11 right-5 border-l h-6 pl-2 text-center border-gray-600">
-                  XAF
+                  {ReceiverCountry}
                 </span>
               </div>
               {/* continue button */}
               <div className="p-2">
-                <Link to="/sendmoney">
-                  <button className="w-full h-12 text-center rounded-lg p-2 bg-Green text-white">
-                    Continue
-                  </button>
-                </Link>
+                {/* <Link to="/sendmoney"> */}
+                <button
+                  type="button"
+                  onClick={handleConvertMoney}
+                  className="w-full h-12 text-center rounded-lg p-2 bg-Green text-white"
+                >
+                  {loading ? "Converting..." : "Continue"}
+                </button>
+                {/* </Link> */}
               </div>
             </>
           )}

@@ -5,6 +5,7 @@ import Lottie from "react-lottie";
 import Loader from "./assets/animations/Loader.json";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallBack";
+import { UserProvider } from "./context/UserContext";
 
 // import using lazy components
 const Home = lazy(() => import("./pages/Home"));
@@ -23,6 +24,7 @@ const TransactionHistory = lazy(() => import("./pages/TransactionHistory"));
 const SendMoney = lazy(() => import("./pages/SendMoney"));
 const MobileBanking = lazy(() => import("./pages/MobileBanking"));
 const TransactionStatus = lazy(() => import("./pages/TransactionStatus"));
+const PrivateRoute = lazy(() => import("./pages/PrivateRoute"));
 const Error404 = lazy(() => import("./pages/Error404"));
 
 const App = () => {
@@ -49,28 +51,83 @@ const App = () => {
             </div>
           }
         >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/contactus" element={<Contactus />} />
-            <Route path="/termsandpolicy" element={<TermsAndPolicy />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/changepassword" element={<ChangePassword />} />
-            <Route path="/resetpassword" element={<ResetPassword />} />
-            <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/recipients" element={<Recipients />} />
-            <Route path="/editrecipients" element={<EditRecipient />} />
-            <Route path="/newrecipients" element={<NewRecipient />} />
-            <Route
-              path="/transactionhistory"
-              element={<TransactionHistory />}
-            />
-            <Route path="/sendmoney" element={<SendMoney />} />
-            <Route path="/mobilebanking" element={<MobileBanking />} />
-            <Route path="/transactionstatus" element={<TransactionStatus />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
+          <UserProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/contactus" element={<Contactus />} />
+              <Route path="/termsandpolicy" element={<TermsAndPolicy />} />
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/changepassword" element={<ChangePassword />} />
+              <Route path="/resetpassword" element={<ResetPassword />} />
+              <Route path="/forgotpassword" element={<ForgotPassword />} />
+              <Route
+                path="/recipients"
+                element={
+                  <PrivateRoute>
+                    <Recipients />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/editrecipients"
+                element={
+                  <PrivateRoute>
+                    <EditRecipient />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/newrecipients"
+                element={
+                  <PrivateRoute>
+                    <NewRecipient />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/transactionhistory"
+                element={
+                  <PrivateRoute>
+                    <TransactionHistory />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/sendmoney"
+                element={
+                  <PrivateRoute>
+                    <SendMoney />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/mobilebanking"
+                element={
+                  <PrivateRoute>
+                    <MobileBanking />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/transactionstatus"
+                element={
+                  <PrivateRoute>
+                    <TransactionStatus />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="*" element={<Error404 />} />
+            </Routes>
+          </UserProvider>
         </Suspense>
       </ErrorBoundary>
     </BrowserRouter>

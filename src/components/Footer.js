@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/footer logo.png";
+import logo from "../assets/footerlogo.png";
 import twitter from "../assets/twitter.png";
 import facebook from "../assets/facebook.png";
 import linkedin from "../assets/linkedin.png";
@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="h-auto bg-LightRed w-full grid lg:grid-cols-4 md:grid-cols-2 place-items-start lg:justify-items-center justify-items-start gap-5 sm:p-10 p-3">
         {/* logo */}
         <div>
-          <img src={logo} className="h-24 w-24 object-center object-cover" />
+          <img src={logo} alt="logo" className="h-24 w-24 object-center object-cover" />
         </div>
         {/* about us  */}
         <div>

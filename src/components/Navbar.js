@@ -9,14 +9,22 @@ import {
   ClockIcon,
   LogoutIcon,
 } from "@heroicons/react/solid";
+import useUserdata from "../hooks/useUserData";
+import { useUserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const [toggleNav, setToggleNav] = useState(false);
+
+  const { handleLogout } = useUserdata();
+
+  const { userData } = useUserContext();
+
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1000) {
       setToggleNav(false);
     }
   });
+
   return (
     <>
       <div className="w-full flex h-16 bg-Red text-white font-semibold lg:justify-around justify-between items-center p-1">
@@ -80,78 +88,85 @@ const Navbar = () => {
           <Link to="/contactus">
             <span>Contact Us</span>
           </Link>
-          {/* USER dropdown*/}
-          <div className="md:block hidden group relative cursor-pointer w-auto h-14 my-auto text-center">
-            <div className="flex items-center justify-center pt-4">
-              <p className="text-center mr-1">Kevin clark</p>
-              <ChevronDownIcon className="h-5 w-5" color="white" />
+          {userData ? (
+            // {/* USER dropdown*/}
+            <div className="md:block hidden group relative cursor-pointer w-auto h-14 my-auto text-center">
+              <div className="flex items-center justify-center pt-4">
+                <p className="text-center mr-1 capitalize">{userData?.user_name}</p>
+                <ChevronDownIcon className="h-5 w-5" color="white" />
+              </div>
+              <div className="group-hover:block text-center absolute top-14 text-black right-0 hidden h-auto z-10">
+                <ul className="top-0 w-60 bg-white shadow-2xl px-3 py-4 rounded-lg sm:space-y-3 space-y-1">
+                  {/* profile */}
+                  <li>
+                    <Link to="/profile">
+                      <button className="text-xl flex items-center justify-start font-medium ml-2 cursor-pointer">
+                        <UserIcon className="h-6 mr-1" color="red" />
+                        <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
+                          Profile
+                        </span>
+                      </button>
+                    </Link>
+                  </li>
+                  {/* Change Password */}
+                  <li>
+                    <Link to="/changepassword">
+                      <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
+                        <LockClosedIcon className="h-6 mr-1" color="red" />
+                        <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
+                          Change Password
+                        </span>
+                      </button>
+                    </Link>
+                  </li>
+                  {/* recipients */}
+                  <li>
+                    <Link to="/recipients">
+                      <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
+                        <UsersIcon className="h-6 mr-1" color="red" />
+                        <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
+                          recipients
+                        </span>
+                      </button>
+                    </Link>
+                  </li>
+                  {/* Transaction History*/}
+                  <li>
+                    <Link to="/transactionhistory">
+                      <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
+                        <ClockIcon className="h-6 mr-1" color="red" />
+                        <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
+                          Transaction History
+                        </span>
+                      </button>
+                    </Link>
+                  </li>
+                  {/* logout */}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      className="text-xl active:scale-95 duration-100 ease-in-out transition-all flex items-center justify-start font-semibold ml-2 cursor-pointer"
+                    >
+                      <LogoutIcon className="h-6 mr-1" color="red" />
+                      <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
+                        Log out
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="group-hover:block text-center absolute top-14 text-black right-0 hidden h-auto z-10">
-              <ul className="top-0 w-60 bg-white shadow-2xl px-3 py-4 rounded-lg sm:space-y-3 space-y-1">
-                {/* profile */}
-                <li>
-                  <Link to="/profile">
-                    <button className="text-xl flex items-center justify-start font-medium ml-2 cursor-pointer">
-                      <UserIcon className="h-6 mr-1" color="red" />
-                      <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
-                        Profile
-                      </span>
-                    </button>
-                  </Link>
-                </li>
-                {/* Change Password */}
-                <li>
-                  <Link to="/changepassword">
-                    <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
-                      <LockClosedIcon className="h-6 mr-1" color="red" />
-                      <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
-                        Change Password
-                      </span>
-                    </button>
-                  </Link>
-                </li>
-                {/* recipients */}
-                <li>
-                  <Link to="/recipients">
-                    <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
-                      <UsersIcon className="h-6 mr-1" color="red" />
-                      <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
-                        recipients
-                      </span>
-                    </button>
-                  </Link>
-                </li>
-                {/* Transaction History*/}
-                <li>
-                  <Link to="/transactionhistory">
-                    <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
-                      <ClockIcon className="h-6 mr-1" color="red" />
-                      <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
-                        Transaction History
-                      </span>
-                    </button>
-                  </Link>
-                </li>
-                {/* logout */}
-                <li>
-                  <button className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer">
-                    <LogoutIcon className="h-6 mr-1" color="red" />
-                    <span className="tracking-normal hover:text-gray-500 cursor-pointer outline-none capitalize">
-                      Log out
-                    </span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/* <Link to="/login">
-            <button
-              className="w-28 h-8  active:scale-95 duration-100 ease-in-out transition-all rounded-lg bg-Green text-xl text-white text-center"
-              type="button"
-            >
-              Login
-            </button>
-          </Link> */}
+          ) : (
+            <Link to="/login">
+              <button
+                className="w-28 h-8  active:scale-95 duration-100 ease-in-out transition-all rounded-lg bg-Green text-xl text-white text-center"
+                type="button"
+              >
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </div>
       {/* mobile nav */}
