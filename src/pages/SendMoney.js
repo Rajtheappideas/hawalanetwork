@@ -60,7 +60,7 @@ const SendMoney = () => {
       <div className={`${showPaymentDiv && "md:h-[28rem] h-[31rem]"}`} />
 
       {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
-        <div className="h-screen w-full bg-white" />
+        <div className="h-96 w-full bg-white" />
       )}
       {!showReceiveDiv && !showReceiverSecondDiv && !showPaymentDiv && (
         <div className="h-screen w-full bg-white" />

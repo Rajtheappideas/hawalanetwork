@@ -13,6 +13,10 @@ const Herosection = () => {
   const [loading, setLoading] = useState(false);
 
   const handleConvertMoney = () => {
+    if(senderAmount === 0){
+      alert("amount should more than 0")
+      return false
+    }
     setLoading(true);
     axios(
       `https://api.apilayer.com/fixer/convert?to=${ReceiverCountry}&from=${senderCountry}&amount=${senderAmount}`,
@@ -27,6 +31,8 @@ const Herosection = () => {
         console.log(res?.data);
         if (res?.data?.success === true) {
           setReceiverAmount(Math.floor(res?.data?.result));
+          setLoading(false);
+        } else if (res?.data?.success === false) {
           setLoading(false);
         }
       })

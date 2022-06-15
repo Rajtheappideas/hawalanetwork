@@ -1,6 +1,5 @@
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import React from "react";
-import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import caneda from "../../assets/caneda.png";
 
@@ -12,14 +11,14 @@ const Sender = ({ setShowReceiveDiv }) => {
   return (
     <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 space-y-5 absolute top-1/2 left-1/2 -translate-x-1/2 pb-10">
       <div className="text-lg font-semibold text-left">
-        <p className="font-bold sm:text-2xl text-xl text-left">Sender</p>
-        You do not need to complete this form if you have an account.
+        <p className="font-bold sm:text-3xl text-xl text-left">Sender</p>
+        {/* You do not need to complete this form if you have an account.
         <Link to="/login">
           <button type="button" className="text-Red">
             Login
           </button>{" "}
         </Link>
-        here
+        here */}
       </div>
       {/* name */}
       <div className="flex flex-col items-start">
@@ -134,42 +133,44 @@ const Sender = ({ setShowReceiveDiv }) => {
       <div className="flex flex-col items-start">
         <Label>Upload a file?</Label>
         <div className="relative w-full">
-          <input
-            type="file"
-            className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
-            placeholder="Select file"
-          />
-          <div className="absolute top-0 right-0 h-full p-1">
+          <div className="flex justify-between items-center absolute top-0 right-1 h-full p-1 w-full">
+            <p className="pl-4 text-lg font-semibold">Select File</p>
             <button
               type="button"
-              className="w-28 float-right z-10 bg-gray-200 h-full text-center rounded-lg"
+              className="w-28  bg-gray-200 h-full text-center rounded-lg"
             >
               Browse
             </button>
           </div>
+          <div className="w-full z-50 h-16 bg-LightGray cursor-pointer border border-black rounded-lg outline-none">
+            <input
+              type="file"
+              className="w-full opacity-0 h-full cursor-pointer"
+            />
+          </div>
         </div>
       </div>
       {/* checkbox */}
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <input type="checkbox" className="h-7 w-7 bg-Green rounded-lg mr-2" />
         <p className="capitalize font-normal text-xl">Create account</p>
-      </div>
+      </div> */}
       {/* password */}
-      <div className="flex flex-col items-start">
+      {/* <div className="flex flex-col items-start">
         <Label>Password*</Label>
         <input
           type="password"
           className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
         />
-      </div>
+      </div> */}
       {/* confirm password */}
-      <div className="flex flex-col items-start">
+      {/* <div className="flex flex-col items-start">
         <Label>Confirm Password*</Label>
         <input
           type="password"
           className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none"
         />
-      </div>
+      </div> */}
       {/*receive phone */}
       <div className="flex flex-col items-start relative">
         <Label>Receiver's Phone*</Label>

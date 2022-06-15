@@ -79,13 +79,13 @@ const Receiver = ({
         <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 space-y-5  absolute top-1/2 left-1/2 -translate-x-1/2 pb-10">
           <div className="text-lg font-semibold text-left">
             <p className="font-bold sm:text-2xl text-xl text-left">Receiver</p>
-            You do not need to complete this form if you have an account.{" "}
+            {/* You do not need to complete this form if you have an account.{" "}
             <Link to="/login">
               <button type="button" className="text-Red">
                 Login
               </button>{" "}
             </Link>
-            here
+            here */}
           </div>
           {/* name */}
           <div className="flex flex-col items-start">
