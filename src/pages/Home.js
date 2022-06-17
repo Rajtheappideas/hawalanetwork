@@ -9,8 +9,11 @@ import {
   Navbar,
   WhyChooseUs,
 } from "../components/index";
+import { useUserContext } from "../context/UserContext";
 
 const Home = () => {
+  const { userData } = useUserContext();
+  console.log(userData);
   // useEffect(() => {
   //   axios("https://api.apilayer.com/fixer/convert?to=INR&from=USD&amount=100", {
   //     method: "GET",

@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Footer, Navbar } from "../components";
 import background from "../assets/background.png";
 import Caneda from "../assets/caneda.png";
 import { ChevronDownIcon } from "@heroicons/react/outline";
+import toast, { Toaster } from "react-hot-toast";
 
 const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
+
+  const handleForgotPassword = () => {
+    if (email === "") {
+      toast.error("please enter email", {
+        duration: 2000,
+        style: {
+          width: "500px",
+          background: "black",
+          color: "white",
+          fontSize: "large",
+        },
+        position: "top-center",
+      });
+      return false;
+    }
+  };
+
   return (
     <div className="xl:p-5">
       <Helmet>
         <title>Reset Password</title>
       </Helmet>
+      <Toaster />
       <Navbar />
       <div className="relative">
         <img
@@ -29,7 +49,8 @@ const ForgotPassword = () => {
         <p className="text-xl font-semibold text-center">
           Enter your phone number to reset your account password.
         </p>
-        <div className="flex flex-col items-start relative">
+        {/* phone */}
+        {/* <div className="flex flex-col items-start relative">
           <label>Receiver's Phone*</label>
           <input
             type="tel"
@@ -41,16 +62,28 @@ const ForgotPassword = () => {
             <img src={Caneda} className="h-7 mr-1" />
             <ChevronDownIcon className="h-5" />
           </div>
+        </div> */}
+        {/* email */}
+        <div className="flex flex-col items-start relative">
+          <label>Receiver's email*</label>
+          <input
+            type="email"
+            className="w-full p-4  bg-LightGray border border-black rounded-lg outline-none"
+            placeholder="type here"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
         </div>
         <div>
-          <Link to="/resetpassword">
+          {/* <Link to="/resetpassword"> */}
             <button
               type="button"
+              onClick={handleForgotPassword}
               className="w-full active:scale-95 duration-100 ease-in-out transition-all h-12 text-center text-white bg-Green rounded-lg"
             >
               Reset Password
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
       <Footer />

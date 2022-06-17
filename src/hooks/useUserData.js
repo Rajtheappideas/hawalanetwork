@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 const useUserdata = () => {
-  const { setUserData } = useUserContext();
+  const { setUserData, userData } = useUserContext();
   const [loadingGoogle, setLoadingGoogle] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -51,10 +52,17 @@ const useUserdata = () => {
     }
   };
   const handleLogout = () => {
+    axios("https://chessmafia.com/php/HawalaNetwork/App/api/logout", {
+      headers: {
+        "consumer-access-token": userData?.api_token,
+      },
+    })
+      .then((res) => console.log(res?.data))
+      .catch((err) => console.log(err?.resposne));
     localStorage.clear();
     setUserData(null);
     navigate("/");
-    window.location.reload();
+    // window.location.reload();
   };
   return { handleLogout, handleFailure, handleSuccess, loadingGoogle };
 };

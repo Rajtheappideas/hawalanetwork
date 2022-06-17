@@ -42,7 +42,6 @@ const Login = () => {
           },
         })
         .then((res) => {
-          console.log(res?.data?.data);
           if (res.data.status === "Success") {
             window.localStorage.setItem(
               "user",
