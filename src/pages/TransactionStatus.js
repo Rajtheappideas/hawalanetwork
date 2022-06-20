@@ -5,7 +5,7 @@ import background from "../assets/background.png";
 
 const TransactionStatus = () => {
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Transaction Status</title>
       </Helmet>

@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 const useUserdata = () => {
   const { setUserData, userData } = useUserContext();
   const [loadingGoogle, setLoadingGoogle] = useState(false);
-
 
   const navigate = useNavigate();
 
@@ -53,16 +53,30 @@ const useUserdata = () => {
   };
   const handleLogout = () => {
     axios("https://chessmafia.com/php/HawalaNetwork/App/api/logout", {
+      method: "POST",
       headers: {
         "consumer-access-token": userData?.api_token,
       },
     })
-      .then((res) => console.log(res?.data))
-      .catch((err) => console.log(err?.resposne));
-    localStorage.clear();
-    setUserData(null);
-    navigate("/");
-    // window.location.reload();
+      .then((res) => {
+        console.log(res?.data);
+        if (res?.data?.status == "Success") {
+          toast.success(res?.data?.message, {
+            duration: 2000,
+            style: {
+              width: "500px",
+              background: "black",
+              color: "white",
+              fontSize: "large",
+            },
+            position: "top-center",
+          });
+          localStorage.clear();
+          navigate("/");
+          setUserData(null);
+        }
+      })
+      .catch((err) => console.log(err?.resposne?.data));
   };
   return { handleLogout, handleFailure, handleSuccess, loadingGoogle };
 };

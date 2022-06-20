@@ -48,8 +48,8 @@ const Signup = () => {
         "should be 6 chars minimum with at least 1 uppercase and one special character."
       )
       .matches(
-        /^(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/,
-        "Password should be 10 chars minimum with at least 1 uppercase and one special character."
+        /^(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+        "Password should be 6 chars minimum with at least 1 uppercase and one special character."
       ),
     confirmpassword: yup
       .string()
@@ -155,7 +155,7 @@ const Signup = () => {
   `;
 
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Sign up</title>
       </Helmet>

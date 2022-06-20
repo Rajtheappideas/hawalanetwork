@@ -9,7 +9,7 @@ import img3 from "../assets/location.png";
 
 const Contactus = () => {
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Contact us</title>
       </Helmet>

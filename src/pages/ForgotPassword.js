@@ -6,9 +6,16 @@ import background from "../assets/background.png";
 import Caneda from "../assets/caneda.png";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
+import OtpVerify from "../components/OtpVerify";
 
 const ForgotPassword = () => {
+  const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const CloseModal = () => setOpenModal(false);
 
   const handleForgotPassword = () => {
     if (email === "") {
@@ -24,10 +31,41 @@ const ForgotPassword = () => {
       });
       return false;
     }
+    setLoading(true);
+    axios("https://chessmafia.com/php/HawalaNetwork/App/api/forgot-password", {
+      method: "POST",
+      params: {
+        email: email,
+      },
+    })
+      .then((res) => {
+        console.log(res?.data);
+        if (res?.data?.status === "Success") {
+          setOpenModal(true);
+          setOtp(res?.data?.data?.otp);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err?.response?.data);
+        if (err?.response?.data?.status == "Error") {
+          toast.error(err?.response?.data?.message, {
+            duration: 2000,
+            style: {
+              width: "500px",
+              background: "black",
+              color: "white",
+              fontSize: "large",
+            },
+            position: "top-center",
+          });
+        }
+        setLoading(false);
+      });
   };
 
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Reset Password</title>
       </Helmet>
@@ -47,7 +85,7 @@ const ForgotPassword = () => {
       {/* form */}
       <div className="h-auto lg:w-1/2 w-[90%] mx-auto bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2 absolute sm:top-1/2 top-[60%] left-1/2 -translate-x-1/2">
         <p className="text-xl font-semibold text-center">
-          Enter your phone number to reset your account password.
+          Enter your email to reset your account password.
         </p>
         {/* phone */}
         {/* <div className="flex flex-col items-start relative">
@@ -75,15 +113,21 @@ const ForgotPassword = () => {
           />
         </div>
         <div>
-          {/* <Link to="/resetpassword"> */}
-            <button
-              type="button"
-              onClick={handleForgotPassword}
-              className="w-full active:scale-95 duration-100 ease-in-out transition-all h-12 text-center text-white bg-Green rounded-lg"
-            >
-              Reset Password
-            </button>
-          {/* </Link> */}
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            className="w-full active:scale-95 duration-100 ease-in-out transition-all h-12 text-center text-white bg-Green rounded-lg"
+          >
+            {loading ? "checking..." : "Reset Password"}
+          </button>
+          {openModal && (
+            <OtpVerify
+              openModal={openModal}
+              CloseModal={CloseModal}
+              email={email}
+              otp={otp}
+            />
+          )}
         </div>
       </div>
       <Footer />

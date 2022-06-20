@@ -5,7 +5,7 @@ import background from "../assets/background.png";
 
 const EditRecipient = () => {
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Edit Recipients</title>
       </Helmet>

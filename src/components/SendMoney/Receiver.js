@@ -14,7 +14,6 @@ const Receiver = ({
   sm:text-xl mb-2 font-semibold
   `;
 
-
   return (
     <>
       {showReceiverSecondDiv ? (
@@ -29,9 +28,11 @@ const Receiver = ({
           <div className="flex flex-col items-start">
             <div className="flex justify-between items-center w-full">
               <p className="sm:text-xl mb-2 font-semibold">Recipients</p>
-              <button type="button" className="text-Green font-semibold">
-                + Add new recipient
-              </button>
+              <Link to="/newrecipients">
+                <button type="button" className="text-Green font-semibold">
+                  + Add new recipient
+                </button>
+              </Link>
             </div>
             <select className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none">
               <option>Choose a recipient</option>

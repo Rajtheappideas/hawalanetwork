@@ -5,7 +5,7 @@ import background from "../assets/background.png";
 
 const TermsAndPolicy = () => {
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Terms and policy</title>
       </Helmet>

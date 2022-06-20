@@ -111,7 +111,7 @@ const Recipients = () => {
   `;
 
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Recipients</title>
       </Helmet>

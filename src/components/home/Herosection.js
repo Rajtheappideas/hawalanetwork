@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import background from "../../assets/background.png";
+import { useUserContext } from "../../context/UserContext";
 
 const Herosection = () => {
   const [openSendMoney, setOpenSendMoney] = useState(true);
@@ -10,12 +11,22 @@ const Herosection = () => {
   const [ReceiverCountry, setReceiverCountry] = useState("USD");
   const [senderAmount, setSenderAmount] = useState(0);
   const [receiverAmount, setReceiverAmount] = useState(0);
+  const [sendMoneySummary, setSendMoneySummary] = useState({});
+  const [senderCountryName, setSenderCountryName] = useState("canada");
   const [loading, setLoading] = useState(false);
 
+  const { userData } = useUserContext();
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   handleConvertMoney();
+  // }, [senderAmount]);
+
   const handleConvertMoney = () => {
-    if(senderAmount === 0){
-      alert("amount should more than 0")
-      return false
+    if (senderAmount === 0) {
+      alert("amount should more than 0");
+      return false;
     }
     setLoading(true);
     axios(
@@ -41,6 +52,48 @@ const Herosection = () => {
         setLoading(false);
       });
   };
+
+  const handleSendMoneyData = () => {
+    if (userData === null) {
+      navigate("/login");
+      return false;
+    }
+    if (senderAmount === 0) {
+      return false;
+    }
+    setTimeout(() => {
+      axios(
+        "https://chessmafia.com/php/HawalaNetwork/App/api/send-money-request",
+        {
+          method: "POST",
+          params: {
+            sender_country: senderCountry,
+            receiver_country: ReceiverCountry,
+            sender_amount: senderAmount,
+            receiver_amount: receiverAmount,
+          },
+          headers: {
+            "consumer-access-token": userData?.api_token,
+          },
+        }
+      )
+        .then((res) => {
+          console.log(res?.data);
+          setSendMoneySummary(res?.data?.data?.summary);
+        })
+        .catch((err) => {
+          console.log(err?.response?.data);
+        });
+    }, 2000);
+  };
+  console.log(senderCountryName);
+  const countrysName = [
+    { name: "india" },
+    { name: "canada" },
+    { name: "usa" },
+    { name: "china" },
+    { name: "russia" },
+  ];
   return (
     <div className="h-full w-full relative">
       <img
@@ -97,10 +150,16 @@ const Herosection = () => {
                   Sender country
                 </label>
                 <select
-                  onChange={(e) => setSenderCountry(e.target.value)}
+                  onChange={(e) => {
+                    setSenderCountry(e.target.value);
+                    setSenderCountryName(e.target.id);
+                  }}
                   value={senderCountry}
                   className="w-full border border-gray-400 p-2 rounded-lg"
                 >
+                  {/* {countrysName.map((name) => (
+                    <option value={name.name}>{name.name}</option>
+                  ))} */}
                   <option value={"CAD"}>Canada</option>
                   <option value={"INR"}>India</option>
                   <option value={"CNY"}>China</option>
@@ -163,7 +222,10 @@ const Herosection = () => {
                 {/* <Link to="/sendmoney"> */}
                 <button
                   type="button"
-                  onClick={handleConvertMoney}
+                  onClick={() => {
+                    handleConvertMoney();
+                    handleSendMoneyData();
+                  }}
                   className="w-full h-12 text-center rounded-lg p-2 bg-Green text-white"
                 >
                   {loading ? "Converting..." : "Continue"}

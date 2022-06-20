@@ -83,7 +83,7 @@ const Login = () => {
   `;
 
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Login</title>
       </Helmet>

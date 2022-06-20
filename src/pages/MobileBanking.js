@@ -5,7 +5,7 @@ import background from "../assets/backgroundcontactus.png";
 
 const MobileBanking = () => {
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Mobile Banking</title>
       </Helmet>

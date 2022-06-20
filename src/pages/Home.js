@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { Toaster } from "react-hot-toast";
 import {
   Faq,
   Footer,
@@ -13,23 +14,13 @@ import { useUserContext } from "../context/UserContext";
 
 const Home = () => {
   const { userData } = useUserContext();
-  console.log(userData);
-  // useEffect(() => {
-  //   axios("https://api.apilayer.com/fixer/convert?to=INR&from=USD&amount=100", {
-  //     method: "GET",
-  //     headers: {
-  //       apikey: "V2uXIGo1Z4K2ostph9bHPxcs0Ev83AH9",
-  //     },
-  //   })
-  //     .then((res) => console.log(res?.data))
-  //     .catch((err) => console.log(err?.response?.data));
-  // }, []);
 
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Home</title>
       </Helmet>
+      <Toaster />
       <Navbar />
       <Herosection />
       <WhyChooseUs />

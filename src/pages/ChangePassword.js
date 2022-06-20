@@ -90,7 +90,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="xl:p-5">
+    <div>
       <Helmet>
         <title>Change Password</title>
       </Helmet>
