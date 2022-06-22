@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { XIcon, MenuIcon, ChevronDownIcon } from "@heroicons/react/outline";
@@ -19,11 +19,27 @@ const Navbar = () => {
 
   const { userData } = useUserContext();
 
+  const whychooseRef = useRef();
+  const howitsworkRef = useRef();
+  const faqRef = useRef();
+
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1000) {
       setToggleNav(false);
     }
   });
+
+  useEffect(() => {
+    if (window.location.href === "http://localhost:3000/#howitswork") {
+      howitsworkRef.current.click();
+    }
+    if (window.location.href === "http://localhost:3000/#whychooseus") {
+      whychooseRef.current.click();
+    }
+    if (window.location.href === "http://localhost:3000/#faq") {
+      faqRef.current.click();
+    }
+  }, [window.location.href]);
 
   return (
     <>
@@ -76,13 +92,13 @@ const Navbar = () => {
         </div>
         {/* tabs and desktop navbar */}
         <div className="lg:flex items-center space-x-8 hidden">
-          <a href="/#whychooseus">
+          <a ref={whychooseRef} href="/#whychooseus">
             <span>Why Choose Us?</span>
           </a>
-          <a href="/#howitswork">
+          <a ref={howitsworkRef} href="/#howitswork">
             <span>How it Works?</span>
           </a>
-          <a href="/#faq">
+          <a ref={faqRef} href="/#faq">
             <span>FAQ</span>
           </a>
           <Link to="/contactus">
@@ -92,7 +108,9 @@ const Navbar = () => {
             // {/* USER dropdown*/}
             <div className="md:block hidden group relative cursor-pointer w-auto h-14 my-auto text-center">
               <div className="flex items-center justify-center pt-4">
-                <p className="text-center mr-1 capitalize">{userData?.user_name}</p>
+                <p className="text-center mr-1 capitalize">
+                  {userData?.user_name}
+                </p>
                 <ChevronDownIcon className="h-5 w-5" color="white" />
               </div>
               <div className="group-hover:block text-center absolute top-14 text-black right-0 hidden h-auto z-10">

@@ -134,7 +134,7 @@ const Recipients = () => {
           List of recipients to whom you can send money.
         </p>
         {/* search and button */}
-        <div className="flex sm:flex-row flex-col sm:space-y-0 space-y-2 items-center justify-between ">
+        <div className="flex sm:flex-row flex-col sm:space-y-0.5 space-y-2 items-center justify-between ">
           <div className="flex items-center">
             <label className="text-xl font-semibold mr-1">Search:</label>
             <input

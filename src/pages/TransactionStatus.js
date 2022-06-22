@@ -84,9 +84,9 @@ const TransactionStatus = () => {
           </div>
         </div>
       </div>
-      <div className="sm:h-80 h-60" />
+      <div className="sm:h-[22rem] h-60" />
       {/* transaction summuray */}
-      <div className="h-auto lg:w-1/2 xl:w-[52%] w-[90%] mx-auto xl:mt-20 md:mt-24 mt-14 mb-10 bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2">
+      <div className="h-auto lg:w-1/2 w-[90%] mx-auto xl:mt-20 md:mt-24 mt-14 mb-10 bg-white shadow-lg sm:p-10 p-3 sm:space-y-5 space-y-2">
         <p className="sm:text-3xl text-xl font-semibold text-left capitalize">
           transaction Summary
         </p>
@@ -116,14 +116,14 @@ const TransactionStatus = () => {
         </p>
       </div>
       {/* Sender */}
-      <div className="h-auto lg:w-1/2 xl:w-[52%] w-[90%] text-left border-2 border-Green rounded-xl mx-auto mb-10 bg-LightGreen sm:p-5 p-3 space-y-2">
+      <div className="h-auto lg:w-1/2 w-[90%] text-left border-2 border-Green rounded-xl mx-auto mb-10 bg-LightGreen sm:p-5 p-3 space-y-2">
         <p className="sm:text-3xl text-xl font-bold">Sender</p>
         <p className="sm:text-xl font-semibold">Michle John</p>
         <p className="sm:text-xl font-semibold">+12309032039</p>
       </div>
 
       {/* receiver */}
-      <div className="h-auto lg:w-1/2 xl:w-[52%] w-[90%] text-left border-2 border-Green rounded-xl mx-auto mb-20 bg-LightGreen sm:p-5 p-3 space-y-2">
+      <div className="h-auto lg:w-1/2 w-[90%] text-left border-2 border-Green rounded-xl mx-auto mb-20 bg-LightGreen sm:p-5 p-3 space-y-2">
         <p className="sm:text-3xl text-xl font-bold">Receiver</p>
         <p className="sm:text-xl font-semibold">Dude Panchal</p>
         <p className="sm:text-xl font-semibold">+12309032039</p>

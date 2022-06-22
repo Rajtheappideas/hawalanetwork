@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import img1 from "../../assets/icon1.png";
 import img2 from "../../assets/icon2.png";
 import img3 from "../../assets/icon3.png";
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    if (window.location.href === "http://localhost:3000/#whychooseus") {
+      console.log("its work");
+    }
+  }, []);
+
   return (
     <div className="sm:p-10 p-3 bg-white w-full" id="whychooseus">
       <div className="relative">
@@ -21,10 +27,7 @@ const WhyChooseUs = () => {
       <div className="grid md:grid-cols-3 place-items-start justify-items-center p-5 mt-10 gap-5">
         {/* first div */}
         <div className="text-center rounded-xl shadow-lg w-64 h-auto py-5">
-          <img
-            src={img1}
-            className="h-16 w-full mx-auto  object-contain"
-          />
+          <img src={img1} className="h-16 w-full mx-auto  object-contain" />
           <p className="font-semibold capitalize text-xl">Lorem ipsum</p>
           <p className="font-light text-lg text-center tracking-wide w-full px-1 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -33,10 +36,7 @@ const WhyChooseUs = () => {
         </div>
         {/* second div */}
         <div className="text-center rounded-xl shadow-lg w-64 h-auto py-5">
-          <img
-            src={img2}
-            className="h-16 w-full mx-auto  object-contain"
-          />
+          <img src={img2} className="h-16 w-full mx-auto  object-contain" />
           <p className="font-semibold capitalize text-xl">Lorem ipsum</p>
           <p className="font-light text-lg text-center tracking-wide w-full px-1 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -45,10 +45,7 @@ const WhyChooseUs = () => {
         </div>
         {/* third div */}
         <div className="text-center rounded-xl shadow-lg w-64 h-auto py-5">
-          <img
-            src={img3}
-            className="h-16 w-full mx-auto  object-contain"
-          />
+          <img src={img3} className="h-16 w-full mx-auto  object-contain" />
           <p className="font-semibold capitalize text-xl">Lorem ipsum</p>
           <p className="font-light text-lg text-center tracking-wide w-full px-1 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -66,7 +63,7 @@ const Underline = styled.p`
     content: "";
     height: 4px;
     width: 2rem;
-    background: #D84F4F;
+    background: #d84f4f;
     position: absolute;
     left: calc(57% - 10%);
     bottom: 0;
