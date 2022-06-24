@@ -11,7 +11,7 @@ const ReceiverSecondDiv = ({ setShowPaymentDiv, setShowReceiverSecondDiv }) => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const { userData } = useUserContext();
+  const { userData, setReceiverDetails, receiverDetails } = useUserContext();
   // --------------------yup-------------
   const receiverSchema = yup.object().shape({
     hw_reciver_get_money: yup.string().required("please choose any one"),
@@ -21,8 +21,8 @@ const ReceiverSecondDiv = ({ setShowPaymentDiv, setShowReceiverSecondDiv }) => {
   //   formik
   const formik = useFormik({
     initialValues: {
-      hw_reciver_get_money: "",
-      receipt: "",
+      hw_reciver_get_money: receiverDetails?.hw_reciver_get_money || "",
+      receipt: receiverDetails?.recipiets || "",
     },
     validationSchema: receiverSchema,
     onSubmit: (values) => {
@@ -45,6 +45,7 @@ const ReceiverSecondDiv = ({ setShowPaymentDiv, setShowReceiverSecondDiv }) => {
         .then((response) => {
           if (response?.data?.status == "Success") {
             console.log(response?.data);
+            setReceiverDetails(response?.data?.data?.reciver_info);
             setShowPaymentDiv(true);
             setLoading(false);
             return true;

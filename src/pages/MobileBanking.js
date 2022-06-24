@@ -16,7 +16,7 @@ const MobileBanking = () => {
           className="w-full h-96 object-cover object-center -z-10"
         />
         <div className="absolute lg:top-[45%] top-20 left-1/2 -translate-x-1/2 text-center">
-          <h1 className=" font-bold text-3xl  text-white">Mobile Banking</h1>
+          <h1 className=" font-bold text-2xl sm:text-5xl  text-white">Mobile Banking</h1>
         </div>
       </div>
       {/* empty div */}

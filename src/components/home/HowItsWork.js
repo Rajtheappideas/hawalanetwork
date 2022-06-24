@@ -6,7 +6,7 @@ import img3 from "../../assets/mobile banking.png";
 
 const HowItsWork = () => {
   return (
-    <div className="sm:p-10 p-3 bg-LightGray w-full" id="howitswork">
+    <div className="sm:px-52 sm:py-10 p-3 bg-LightGray w-full" id="howitswork">
       <div className="relative">
         <h1 className="text-center font-bold text-3xl pb-3 uppercase">
           How It Works ?

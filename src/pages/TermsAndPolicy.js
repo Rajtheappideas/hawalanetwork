@@ -15,7 +15,7 @@ const TermsAndPolicy = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold text-3xl top-[45%] left-1/2 text-white -translate-x-1/2">
+        <h1 className="absolute font-bold text-2xl sm:text-5xl top-[45%] left-1/2 text-white -translate-x-1/2">
           Terms and Policy
         </h1>
       </div>

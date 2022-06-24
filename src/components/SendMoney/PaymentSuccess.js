@@ -2,7 +2,7 @@ import React from "react";
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
-const PaymentSuccess = () => {
+const PaymentSuccess = ({ transactionCode }) => {
 
   return (
     <>
@@ -23,16 +23,16 @@ const PaymentSuccess = () => {
         </div>
         <div className="text-center h-auto bg-LightRed border border-Red rounded-xl w-full p-3 sm:space-y-5 space-y-2">
           <p>Transaction Code</p>
-          <p className="text-Red text-2xl font-bold">2398-8490-4b23-5</p>
+          <p className="text-Red text-2xl font-bold">{transactionCode}</p>
         </div>
-        <div className="text-center h-auto bg-LightGreen border border-Green rounded-xl w-full p-5 sm:space-y-5 space-y-2">
+        {/* <div className="text-center h-auto bg-LightGreen border border-Green rounded-xl w-full p-5 sm:space-y-5 space-y-2">
           <p>Thank you for your business!</p>
           <p>You can now proceed with the payment via interact e-transfer</p>
           <p className="text-Green text-2xl font-bold">
             Email:eajajfnjn @gmail.com
           </p>
           <p className="text-Green text-2xl font-bold">Password:excmacm</p>
-        </div>
+        </div> */}
       </div>
       <div className="h-60" />
     </>

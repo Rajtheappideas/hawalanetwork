@@ -15,7 +15,7 @@ const TransactionStatus = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold whitespace-nowrap text-3xl sm:top-[45%] top-1/3 left-1/2 text-white -translate-x-1/2">
+        <h1 className="absolute font-bold whitespace-nowrap text-2xl sm:text-5xl sm:top-[45%] top-1/3 left-1/2 text-white -translate-x-1/2">
           Transaction Status
         </h1>
       </div>

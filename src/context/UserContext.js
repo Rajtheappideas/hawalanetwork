@@ -7,11 +7,17 @@ export const UserProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("user"))
       : null
   );
+  const [senderDetails, setSenderDetails] = useState(null);
+  const [receiverDetails, setReceiverDetails] = useState(null);
   return (
     <UserContext.Provider
       value={{
         userData,
         setUserData,
+        setSenderDetails,
+        setReceiverDetails,
+        senderDetails,
+        receiverDetails,
       }}
     >
       {children}

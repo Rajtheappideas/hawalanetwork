@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import tw from "tailwind-styled-components";
 import caneda from "../../assets/caneda.png";
+import india from "../../assets/india.png";
+import usa from "../../assets/usa.png";
+import china from "../../assets/china.png";
+import russia from "../../assets/russia.png";
 import { useUserContext } from "../../context/UserContext";
 import { Form, FormikProvider, ErrorMessage, useFormik } from "formik";
 import * as yup from "yup";
@@ -11,8 +15,9 @@ import { useNavigate } from "react-router-dom";
 
 const Sender = ({ setShowReceiveDiv }) => {
   const [loading, setLoading] = useState(false);
+  const [countryCode, setCountryCode] = useState("+1");
 
-  const { userData } = useUserContext();
+  const { userData, setSenderDetails, senderDetails } = useUserContext();
 
   const navigate = useNavigate();
   // --------------------yup-------------
@@ -50,8 +55,8 @@ const Sender = ({ setShowReceiveDiv }) => {
       .integer("A phone number can't include a decimal point")
       .min(8)
       .required("A phone number is required"),
-    occupation: yup.string().required("occupation is required"),
-    birthday: yup.date().required("birthday is required"),
+    // occupation: yup.string().required("occupation is required"),
+    // birthday: yup.date().required("birthday is required"),
   });
 
   // --------------------------formik-------------
@@ -69,7 +74,7 @@ const Sender = ({ setShowReceiveDiv }) => {
       occupation: userData?.occupation || "",
       birthday: userData?.birthday || "",
       senderPhone: userData?.phone || "",
-      receiverPhone: "",
+      receiverPhone: senderDetails?.receiver_phone || "",
     },
     enableReinitialize: true,
     validationSchema: userProfileSchema,
@@ -100,34 +105,17 @@ const Sender = ({ setShowReceiveDiv }) => {
             },
           }
         )
-        .then((response) => {
-          if (response?.data?.status == "Success") {
-            console.log();
-            // toast.success(response?.data?.message, {
-            //   duration: 2000,
-            //   style: {
-            //     width: "500px",
-            //     background: "black",
-            //     color: "white",
-            //     fontSize: "large",
-            //   },
-            //   position: "top-center",
-            // });
+        .then((res) => {
+          if (res?.data?.status == "Success") {
+            console.log(res?.data?.data);
+            setSenderDetails(res?.data?.data?.sender_info);
             setShowReceiveDiv(true);
-            setLoading(false);
-            return true;
           }
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err?.response?.data);
-          if (
-            err?.response?.data?.message === "Un-Authentic" &&
-            err?.response?.data?.status === "Error"
-          ) {
-            toast(err?.response?.data?.message, { type: "error" });
-            setLoading(false);
-            navigate("/login");
-          } else if (err?.response?.data?.status === "Error") {
+          if (err?.response?.data?.status == "Error") {
             toast.error(err?.response?.data?.message, {
               duration: 2000,
               style: {
@@ -138,9 +126,8 @@ const Sender = ({ setShowReceiveDiv }) => {
               },
               position: "top-center",
             });
-            setLoading(false);
-            return false;
           }
+          setLoading(false);
         });
     },
   });
@@ -154,6 +141,15 @@ const Sender = ({ setShowReceiveDiv }) => {
   const Label = tw.label`
   sm:text-xl mb-2 font-semibold
   `;
+
+  const CountrysCode = [
+    { img: caneda, name: "Canada", dial_code: "+1" },
+    { img: india, name: "India", dial_code: "+91" },
+    { img: usa, name: "Usa", dial_code: "+1" },
+    { img: china, name: "China", dial_code: "+86" },
+    { img: russia, name: "Russia", dial_code: "+7" },
+  ];
+  console.log(countryCode);
   return (
     <>
       <Toaster />
@@ -359,8 +355,39 @@ ${errors?.occupation && touched?.occupation && "border-2 border-red-600"}
                 placeholder="+1"
               />
               <div className="absolute top-12 left-2 flex items-center">
-                <img src={caneda} className="h-7 mr-1" />
-                <ChevronDownIcon className="h-5" />
+                <div className="md:block hidden group relative cursor-pointer w-16 h-10 text-center">
+                  <div className="flex items-center justify-center">
+                    {/* <img src={caneda} className="h-10" /> */}
+                    <input
+                      type="text"
+                      value={"caneda"}
+                      className="w-20 h-8"
+                      onChange={(e) => setCountryCode(e.target?.value)}
+                    />
+                    <ChevronDownIcon className="h-5" />
+                  </div>
+                  <div className="group-hover:block text-center absolute top-10 text-black -left-5 hidden h-auto z-10">
+                    <ul className="top-0 w-40 bg-white shadow-2xl px-3 py-4 rounded-xl">
+                      {CountrysCode?.map((country, i) => (
+                        <li
+                          className="py-1 "
+                          key={i}
+                          onChange={(e) => setCountryCode(e.target?.value)}
+                        >
+                          <button
+                            type="button"
+                            className="text-xl flex items-center justify-start font-semibold ml-2 cursor-pointer hover:scale-95 hover:text-gray-400 duration-100 transition-all ease-in-out"
+                          >
+                            <img src={country?.img} className="h-10 mr-1" />
+                            <span className="hover:text-teal-500 cursor-pointer outline-none hover:border-b border-white text-sm">
+                              {country?.name}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
               <ErrorMessage name="senderPhone" component={TextError} />
             </div>
@@ -424,7 +451,7 @@ ${errors?.occupation && touched?.occupation && "border-2 border-red-600"}
                 placeholder="+1"
               />
               <div className="absolute top-12 left-2 flex items-center">
-                <img src={caneda} className="h-7 mr-1" />
+                <img src={caneda} className="h-10 mr-1" />
                 <ChevronDownIcon className="h-5" />
               </div>
               <ErrorMessage name="receiverPhone" component={TextError} />
@@ -435,6 +462,7 @@ ${errors?.occupation && touched?.occupation && "border-2 border-red-600"}
                 How do you want your recipient to receive the money?*
               </Label>
               <select className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none">
+                <option>select</option>
                 <option>Mobile Money</option>
                 <option>option2</option>
                 <option>option3</option>

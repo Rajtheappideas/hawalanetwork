@@ -35,7 +35,7 @@ const Faq = () => {
   const [activeBanking, setActiveBanking] = useState(false);
   const [activeCharges, setActiveCharges] = useState(false);
   return (
-    <div className="sm:p-10 p-3 bg-white w-full" id="faq">
+    <div className="sm:px-20 sm:py-10 p-3 bg-white w-full" id="faq">
       <div className="relative">
         <h1 className="text-center tracking-widest font-bold text-3xl pb-3">
           FAQ

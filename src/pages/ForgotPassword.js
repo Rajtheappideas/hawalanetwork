@@ -76,7 +76,7 @@ const ForgotPassword = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold text-3xl sm:top-[45%] top-1/3 whitespace-nowrap left-1/2 text-white -translate-x-1/2">
+        <h1 className="absolute font-bold text-2xl sm:text-5xl sm:top-[45%] top-1/3 whitespace-nowrap left-1/2 text-white -translate-x-1/2">
           Reset Password
         </h1>
       </div>
@@ -103,7 +103,7 @@ const ForgotPassword = () => {
         </div> */}
         {/* email */}
         <div className="flex flex-col items-start relative">
-          <label>Receiver's email*</label>
+          <label>Sender's email*</label>
           <input
             type="email"
             className="w-full p-4  bg-LightGray border border-black rounded-lg outline-none"

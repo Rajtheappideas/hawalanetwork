@@ -78,7 +78,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/editrecipients"
+                path="/editrecipients/:id"
                 element={
                   <PrivateRoute>
                     <EditRecipient />

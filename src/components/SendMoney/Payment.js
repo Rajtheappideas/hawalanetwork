@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import { PaymentSuccess } from "..";
 import { Form, FormikProvider, ErrorMessage, useFormik } from "formik";
@@ -14,13 +14,43 @@ const Payment = ({
   setisSuccessPayment,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [transactionCode, setTransactionCode] = useState(null);
 
   const { userData } = useUserContext();
 
   const navigate = useNavigate();
+  useEffect(() => {
+    transactionCodeGenerate(13);
+  }, []);
+
+  // generate transaction code
+  function transactionCodeGenerate(length) {
+    let part1 = "";
+    let part2 = "";
+    let part3 = "";
+    let part4 = "";
+    var generatedString = "";
+    var result = "";
+    var characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      generatedString += characters.charAt(
+        Math.floor(Math.random() * charactersLength)
+      );
+    }
+    part1 = generatedString.slice(0, 4);
+    part2 = generatedString.slice(4, 8);
+    part3 = generatedString.slice(8, 12);
+    part4 = generatedString.slice(12, 13);
+    result = `${part1}-${part2}-${part3}-${part4}`;
+    setTransactionCode(result);
+  }
   // --------------------yup-------------
   const receiverSchema = yup.object().shape({
-    agent_code: yup.number().required("agent code is required").min(4,"agent code should be 4 numbers"),
+    agent_code: yup
+      .number()
+      .required("agent code is required")
+      .min(4, "agent code should be 4 numbers"),
     reasone_for_tranfer: yup
       .string()
       .required("lastname is required")
@@ -40,6 +70,7 @@ const Payment = ({
       let fd = new FormData();
       fd.append("reasone_for_tranfer", values.reasone_for_tranfer);
       fd.append("agent_code", values.agent_code);
+      fd.append("transaction_code", transactionCode);
 
       setLoading(true);
       axios
@@ -102,7 +133,7 @@ const Payment = ({
     <>
       <Toaster />
       {isSuccessPayment ? (
-        <PaymentSuccess />
+        <PaymentSuccess transactionCode={transactionCode} />
       ) : (
         <FormikProvider value={formik}>
           <Form onSubmit={handleSubmit} autoComplete="off">
@@ -114,7 +145,8 @@ const Payment = ({
               {/* transfer reason */}
               <div className="flex flex-col items-start">
                 <Label>Reason For Transfer*</Label>
-                <select
+                <input
+                  type="text"
                   name="reasone_for_tranfer"
                   {...getFieldProps("reasone_for_tranfer")}
                   className={`w-full p-4 bg-LightGray border border-black rounded-lg outline-none
@@ -124,14 +156,7 @@ ${
   "border-2 border-red-600"
 }
 `}
-                >
-                  <option>select</option>
-                  <option>Friend Support</option>
-                  <option>option1</option>
-                  <option>option2</option>
-                  <option>option3</option>
-                  <option>option4</option>
-                </select>
+                ></input>
                 <ErrorMessage
                   name="reasone_for_tranfer"
                   component={TextError}

@@ -18,7 +18,7 @@ const Receiver = ({
   setShowPaymentDiv,
 }) => {
   const [loading, setLoading] = useState(false);
-  const { userData } = useUserContext();
+  const { userData, setReceiverDetails, receiverDetails } = useUserContext();
 
   const navigate = useNavigate();
   // --------------------yup-------------
@@ -47,10 +47,10 @@ const Receiver = ({
 
   const formik = useFormik({
     initialValues: {
-      firstname: "",
-      lastname: "",
-      city: "",
-      receiverPhone: "",
+      firstname: receiverDetails?.f_name || "",
+      lastname: receiverDetails?.l_name || "",
+      city: receiverDetails?.city || "",
+      receiverPhone: receiverDetails?.phone_no || "",
     },
     validationSchema: receiverSchema,
     onSubmit: (values) => {
@@ -76,6 +76,7 @@ const Receiver = ({
         .then((response) => {
           if (response?.data?.status == "Success") {
             console.log(response?.data);
+            setReceiverDetails(response?.data?.data?.reciver_info);
             setShowReceiverSecondDiv(true);
             setLoading(false);
             return true;
@@ -108,8 +109,7 @@ const Receiver = ({
     },
   });
 
-  const { errors, touched, handleSubmit, getFieldProps } =
-    formik;
+  const { errors, touched, handleSubmit, getFieldProps } = formik;
 
   // ------------------error text color tailwind-------------
   const TextError = tw.p`
@@ -229,6 +229,7 @@ const Receiver = ({
                   How do you want your recipient to receive the money?*
                 </Label>
                 <select className="w-full p-4 bg-LightGray border border-black rounded-lg outline-none">
+                  <option>select</option>
                   <option>Mobile Money</option>
                   <option>option2</option>
                   <option>option3</option>

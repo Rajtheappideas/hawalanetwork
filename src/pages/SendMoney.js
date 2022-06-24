@@ -13,7 +13,7 @@ const SendMoney = () => {
   const [showPaymentDiv, setShowPaymentDiv] = useState(false);
   const [isSuccessPayment, setisSuccessPayment] = useState(false);
 
-  const { userData } = useUserContext();
+  const { userData, senderDetails, receiverDetails } = useUserContext();
 
   const { transactionData } = useLocation().state;
 
@@ -28,7 +28,7 @@ const SendMoney = () => {
           src={background}
           className="w-full h-96 object-cover object-center -z-10"
         />
-        <h1 className="absolute font-bold text-3xl whitespace-nowrap sm:top-[40%] top-1/3 left-1/2 text-white -translate-x-1/2">
+        <h1 className="absolute font-bold text-2xl sm:text-5xl whitespace-nowrap sm:top-[40%] top-1/3 left-1/2 text-white -translate-x-1/2">
           Send Money
         </h1>
       </div>
@@ -109,7 +109,7 @@ const SendMoney = () => {
           </p>
           <p className="flex items-center justify-between sm:text-lg font-medium capitalize">
             <span className="text-black">payment method</span>
-            <span className="text-gray-400">interact transfer</span>
+            <span className="text-gray-400">Bank transfer</span>
           </p>
           <p className="text-lg font-medium leading-relaxed bg-Cream text-yellow-600 rounded-lg w-full p-2">
             <span className="text-xl text-yellow-500 font-semibold">
@@ -129,8 +129,12 @@ const SendMoney = () => {
       {showReceiveDiv && !isSuccessPayment && (
         <div className="h-auto lg:w-1/2 w-[90%] text-left border-2 border-Green rounded-xl mx-auto mb-10 bg-LightGreen sm:p-5 p-3 space-y-2">
           <p className="sm:text-3xl text-xl font-bold">Sender</p>
-          <p className="sm:text-xl font-semibold">Michle John</p>
-          <p className="sm:text-xl font-semibold">+12309032039</p>
+          <p className="sm:text-xl font-semibold">
+            {senderDetails?.f_name}&nbsp;{senderDetails?.l_name}
+          </p>
+          <p className="sm:text-xl font-semibold">
+            {senderDetails?.senders_phone}
+          </p>
         </div>
       )}
 
@@ -138,8 +142,10 @@ const SendMoney = () => {
       {showPaymentDiv && !isSuccessPayment && (
         <div className="h-auto lg:w-1/2 w-[90%] text-left border-2 border-Green rounded-xl mx-auto mb-20 bg-LightGreen sm:p-5 p-3 space-y-2">
           <p className="sm:text-3xl text-xl font-bold">Receiver</p>
-          <p className="sm:text-xl font-semibold">Dude Panchal</p>
-          <p className="sm:text-xl font-semibold">+12309032039</p>
+          <p className="sm:text-xl font-semibold">
+            {receiverDetails?.f_name}&nbsp;{receiverDetails?.l_name}
+          </p>
+          <p className="sm:text-xl font-semibold">{receiverDetails?.phone_no}</p>
         </div>
       )}
       <Footer />

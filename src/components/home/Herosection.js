@@ -203,9 +203,9 @@ const Herosection = () => {
                   min={0}
                   onChange={(e) => setSenderAmount(e.target.value)}
                   value={senderAmount}
-                  className="border border-gray-400 outline-none py-2 pr-14 pl-2 rounded-lg"
+                  className="border border-gray-400 outline-none py-2 pr-20 pl-2 rounded-lg"
                 />
-                <span className="absolute top-11 right-5 border-l h-6 pl-2 text-center border-gray-600">
+                <span className="absolute top-11 right-10 border-l h-6 pl-4 text-center border-gray-600">
                   {senderCountry}
                 </span>
               </div>
@@ -222,7 +222,7 @@ const Herosection = () => {
                   className="border border-gray-400 outline-none py-2 pr-14 pl-2 rounded-lg"
                   disabled={true}
                 />
-                <span className="absolute top-11 right-5 border-l h-6 pl-2 text-center border-gray-600">
+                <span className="absolute top-11 right-10 border-l h-6 pl-5 text-center border-gray-600">
                   {ReceiverCountry}
                 </span>
               </div>
